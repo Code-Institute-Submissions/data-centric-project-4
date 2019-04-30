@@ -20,6 +20,10 @@ def home():
 @app.route('/layout')
 def getlayout():
     return render_template("layout.html")
+
+@app.route('/testing')
+def testing():
+    return "testing"
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
