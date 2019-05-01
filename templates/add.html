@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block maincontent %}
+<h1>Add Recipes</h1>
+<form method = 'POST'>
+    <div>
+    <label>Name of recipe:</label>
+    <input type ='text' name='recipename'></input>
+    </div>
+    <div>
+    <label>Number of calories:</label>
+    <input type ='text' name='numofcalories'></input>
+    </div>
+    <div>
+    <label>Serving Size:</label>
+     <input type ='text' name='servingsize'></input>
+    </div>
+    <div>
+    <label>Type of Cuisine:</label>
+     <select name = 'cuisinetype'>
+         {% for c in collection_cuisine %}
+         <option>{{c['name']}}</option>
+         {% endfor %}
+     </select>
+    </div>
+     <div>
+            <input type='submit'/>
+    </div>
+    
+</form>
+{% endblock %}

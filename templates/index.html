@@ -8,12 +8,21 @@
     }
 </style>
  <h1>Recipes</h1>
-{% for m in collection %}
+ <label>Cuisine:</label>
+ <select name = 'cuisine' multiple>
+{% for n in collection_cuisine %}
+<option>{{n['name']}}</option>
+{% endfor %}
+</select>
+<input type='submit' value='Filter'>
+{% for m in collection_recipes %}
     <li class = 'outer'>
    <p>Name: {{m['name']}}</p>
-   <p>Calories: {{m['num_of_calories_per_serving']}}</p>
-   <p>Serving size: {{m['num_of_serving']}}</p>
-   {% endfor %}
-
+   <p>Type of Cuisine: {{m['cuisine_type']}}</p>
+   <p>Number of Calories Per Serving: {{m['num_of_calories_per_serving']}}</p>
+   <p>Serving Size: {{m['num_of_serving']}}</p>
 </li>
+<a href='edit_recipe/{{m._id}}'>Edit</a>
+<a href='delete_recipe/{{m._id}}'>Delete</a>
+{% endfor %}
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block maincontent %}
+<h1>Edit Recipes</h1>
+<form method = 'POST'>
+    <div>
+    <label>Name of recipe:</label>
+    <input type ='text' name='recipename' value={{getrecipe.name}}></input>
+    </div>
+    <div>
+    <label>Number of calories:</label>
+    <input type ='text' name='numofcalories' value={{getrecipe.num_of_calories_per_serving}}></input>
+    </div>
+    <div>
+    <label>Serving Size:</label>
+     <input type ='text' name='servingsize' value={{getrecipe.num_of_serving}}></input>
+    </div>
+    <div>
+    <label>Type of Cuisine:</label>
+    <select name = 'cuisinetype'>
+    {% for c in collection_cuisine %}
+        {%if c['name'] in getrecipe.cuisine_type %}
+        <option selected>{{getrecipe.cuisine_type}}</option>
+        {% else %}
+        <option>{{c['name']}}</option>
+        {%endif %}
+    {% endfor %}
+    </select>
+    </div>
+     <div>
+        <input type='submit'/>
+    </div>
+    
+</form>
+{% endblock %}
