@@ -56,7 +56,30 @@ def addrecipe():
             'cuisine_type': cuisine_type
         })
         return redirect('/')
+        
+@app.route('/msia_cuisine')
+def msia_cuisine():
+    collection_recipes = conn['cookingRecipes']['recipes']
+    found = list(collection_recipes.find({'cuisine_type': 'Malaysian'}))
+    # for d in found:
+    #     print(d)
+    return render_template("search-results.html",collection_recipes = found)
 
+@app.route('/thai_cuisine')
+def thai_cuisine():
+    collection_recipes = conn['cookingRecipes']['recipes']
+    found = list(collection_recipes.find({'cuisine_type': 'Thai'}))
+    # for d in found:
+    #     print(d)
+    return render_template("search-results.html",collection_recipes = found)
+
+@app.route('/indian_cuisine')
+def indian_cuisine():
+    collection_recipes = conn['cookingRecipes']['recipes']
+    found = list(collection_recipes.find({'cuisine_type': 'Indian'}))
+    # for d in found:
+    #     print(d)
+    return render_template("search-results.html",collection_recipes = found)
 
 @app.route('/edit_recipe/<recipe_id>', methods=['GET','POST'])
 def edit_recipe(recipe_id):
