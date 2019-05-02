@@ -57,6 +57,7 @@ def addrecipe():
         })
         return redirect('/')
 
+
 @app.route('/edit_recipe/<recipe_id>', methods=['GET','POST'])
 def edit_recipe(recipe_id):
     collection_recipes = conn['cookingRecipes']['recipes']

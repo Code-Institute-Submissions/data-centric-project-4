@@ -8,13 +8,6 @@
     }
 </style>
  <h1>Recipes</h1>
- <label>Cuisine:</label>
- <select name = 'cuisine' multiple>
-{% for n in collection_cuisine %}
-<option>{{n['name']}}</option>
-{% endfor %}
-</select>
-<input type='submit' value='Filter'>
 {% for m in collection_recipes %}
     <li class = 'outer'>
    <p>Name: {{m['name']}}</p>
