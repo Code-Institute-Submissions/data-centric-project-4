@@ -5,15 +5,31 @@
 <form method = 'POST'>
     <div>
     <label>Name of recipe:</label>
-    <input type ='text' name='recipename' value={{getrecipe.name}}></input>
+    <input type ='text' name='recipename' value='{{getrecipe.name}}'></input>
     </div>
     <div>
     <label>Number of calories:</label>
-    <input type ='text' name='numofcalories' value={{getrecipe.num_of_calories_per_serving}}></input>
+    <input type ='text' name='numofcalories' value='{{getrecipe.num_of_calories_per_serving}}'></input>
     </div>
     <div>
     <label>Serving Size:</label>
-     <input type ='text' name='servingsize' value={{getrecipe.num_of_serving}}></input>
+     <input type ='text' name='servingsize' value='{{getrecipe.num_of_serving}}'></input>
+    </div>
+    <div>
+    <label>Author of Recipe:</label>
+     <input type ='text' name='recipeauthor' value='{{getrecipe.recipe_author}}'></input>
+    </div>
+    <div>
+    <label>Preparation Time:</label>
+     <input type ='text' name='preptime' value='{{getrecipe.preptime}}'></input>
+    </div>
+    <div>
+    <label>Cook Time:</label>
+     <input type ='text' name='cooktime' value='{{getrecipe.cooktime}}'></input>
+    </div>
+    <div>
+    <label>Instructions:</label>
+    <textarea name = 'instructions'>{{getrecipe.instructions}}</textarea>
     </div>
     <div>
     <label>Type of Cuisine:</label>

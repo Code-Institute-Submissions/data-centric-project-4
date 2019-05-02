@@ -39,12 +39,20 @@ def addrecipe():
         name_recipe = request.form['recipename']
         num_calories = request.form['numofcalories']
         serving_size = request.form['servingsize']
+        recipe_author = request.form['recipeauthor']
+        prep_time = request.form['preptime']
+        cook_time = request.form['cooktime']
+        instructions = request.form['instructions']
         cuisine_type = request.form['cuisinetype']
         collection_recipes = conn['cookingRecipes']['recipes']
         collection_recipes.insert({
             'name': name_recipe,
             'num_of_calories_per_serving': num_calories,
             'num_of_serving': serving_size,
+            'recipe_author' : recipe_author,
+            'preptime' : prep_time,
+            'cooktime' : cook_time,
+            'instructions' : instructions,
             'cuisine_type': cuisine_type
         })
         return redirect('/')
@@ -63,14 +71,23 @@ def edit_recipe(recipe_id):
         name_recipe = request.form['recipename']
         num_calories = request.form['numofcalories']
         serving_size = request.form['servingsize']
-       
+        recipe_author = request.form['recipeauthor']
+        prep_time = request.form['preptime']
+        cook_time = request.form['cooktime']
+        instructions = request.form['instructions']
+        cuisine_type = request.form['cuisinetype']
         collection_recipes.update({
             '_id':ObjectId(recipe_id)
         },{
             '$set':{
             'name': name_recipe,
             'num_of_calories_per_serving': num_calories,
-            'num_of_serving': serving_size
+            'num_of_serving': serving_size,
+            'recipe_author' : recipe_author,
+            'preptime' : prep_time,
+            'cooktime' : cook_time,
+            'instructions' : instructions,
+            'cuisine_type': cuisine_type
             }
         })
         return redirect('/')
