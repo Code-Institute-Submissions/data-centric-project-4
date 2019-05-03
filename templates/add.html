@@ -52,6 +52,14 @@
          {% endfor %}
      </select>
     </div>
+    <div>
+    <label>Type of Course:</label>
+     <select name = 'coursetype'>
+         {% for e in collection_course %}
+         <option>{{e['name']}}</option>
+         {% endfor %}
+     </select>
+    </div>
      <div>
             <input type='submit'/>
     </div>
