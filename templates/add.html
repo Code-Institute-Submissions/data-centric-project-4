@@ -44,6 +44,14 @@
          {% endfor %}
      </select>
     </div>
+    <div>
+    <label>Difficulty:</label>
+     <select name = 'difficulty'>
+         {% for d in collection_skill %}
+         <option>{{d['name']}}</option>
+         {% endfor %}
+     </select>
+    </div>
      <div>
             <input type='submit'/>
     </div>
