@@ -47,6 +47,17 @@
     {% endfor %}
     </select>
     </div>
+    <div>
+    <label>Difficulty:</label>
+    <select name = 'difficulty'>
+    {% for d in collection_skill %}
+        {%if d['name'] in getrecipe.difficulty %}
+        <option selected>{{getrecipe.difficulty}}</option>
+        {% else %}
+        <option>{{d['name']}}</option>
+        {%endif %}
+    {% endfor %}
+    </select>
      <div>
         <input type='submit'/>
     </div>
