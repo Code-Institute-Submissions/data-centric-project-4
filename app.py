@@ -22,7 +22,12 @@ def getindex():
     # for a in found_skill:
     #     print(a)
     # found_skill.rewind()
-    return render_template("index.html",collection_recipes=found,collection_cuisine=found_cuisine,collection_skill = found_skill)
+    collection_course = conn['cookingRecipes']['course']
+    found_course = list(collection_course.find({}))
+    # for a in found_skill:
+    #     print(a)
+    # found_skill.rewind()
+    return render_template("index.html",collection_recipes=found,collection_cuisine=found_cuisine,collection_skill = found_skill,collection_course=found_course)
 
 @app.route('/msia_cuisine')
 def msia_cuisine():
@@ -72,6 +77,29 @@ def hard_recipes():
     #     print(d)
     return render_template("index.html",collection_recipes = found)
 
+@app.route('/main_course')
+def main_course():
+    collection_recipes = conn['cookingRecipes']['recipes']
+    found = list(collection_recipes.find({'course_type': 'Main'}))
+    # for d in found:
+    #     print(d)
+    return render_template("index.html",collection_recipes = found)
+
+@app.route('/starter_course')
+def starter_course():
+    collection_recipes = conn['cookingRecipes']['recipes']
+    found = list(collection_recipes.find({'course_type': 'Starter'}))
+    # for d in found:
+    #     print(d)
+    return render_template("index.html",collection_recipes = found)
+
+@app.route('/desserts_course')
+def desserts_course():
+    collection_recipes = conn['cookingRecipes']['recipes']
+    found = list(collection_recipes.find({'course_type': 'Desserts'}))
+    # for d in found:
+    #     print(d)
+    return render_template("index.html",collection_recipes = found)
 @app.route('/add', methods =['GET','POST'])
 def addrecipe():
     if request.method =='GET':
@@ -79,9 +107,12 @@ def addrecipe():
         found_cuisine =  collection_cuisine.find({})
         collection_skill = conn['cookingRecipes']['skill_level']
         found_skill = collection_skill.find({})
-        return render_template("add.html",collection_cuisine=found_cuisine,collection_skill=found_skill)
+        collection_course = conn['cookingRecipes']['course']
+        found_course = collection_course.find({})
+        return render_template("add.html",collection_cuisine=found_cuisine,collection_skill=found_skill,collection_course=found_course)
     else:
         name_recipe = request.form['recipename']
+        course_type = request.form['coursetype']
         skill_level = request.form['difficulty']
         num_calories = request.form['numofcalories']
         serving_size = request.form['servingsize']
@@ -94,6 +125,7 @@ def addrecipe():
         collection_recipes = conn['cookingRecipes']['recipes']
         collection_recipes.insert({
             'name': name_recipe,
+            'course_type': course_type,
             'difficulty' : skill_level,
             'num_of_calories_per_serving': num_calories,
             'num_of_serving': serving_size,
@@ -118,9 +150,12 @@ def edit_recipe(recipe_id):
         found = collection_cuisine.find({})
         collection_skill = conn['cookingRecipes']['skill_level']
         found_skill = collection_skill.find({})
-        return render_template('edit.html',getrecipe=collection_from_db, collection_cuisine=list(found), collection_skill=list(found_skill))
+        collection_course = conn['cookingRecipes']['course']
+        found_course = collection_course.find({})
+        return render_template('edit.html',getrecipe=collection_from_db, collection_cuisine=list(found), collection_skill=list(found_skill), collection_course=list(found_course))
     else:
         name_recipe = request.form['recipename']
+        course_type = request.form['coursetype']
         skill_level = request.form['difficulty']
         num_calories = request.form['numofcalories']
         serving_size = request.form['servingsize']
@@ -135,6 +170,7 @@ def edit_recipe(recipe_id):
         },{
             '$set':{
             'name': name_recipe,
+            'course_type': course_type,
             'difficulty' : skill_level,
             'num_of_calories_per_serving': num_calories,
             'num_of_serving': serving_size,
