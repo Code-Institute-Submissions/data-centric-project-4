@@ -25,7 +25,7 @@ def msia_cuisine():
     found = list(collection_recipes.find({'cuisine_type': 'Malaysian'}))
     # for d in found:
     #     print(d)
-    return render_template("search-results.html",collection_recipes = found)
+    return render_template("index.html",collection_recipes = found)
 
 @app.route('/thai_cuisine')
 def thai_cuisine():
@@ -33,7 +33,7 @@ def thai_cuisine():
     found = list(collection_recipes.find({'cuisine_type': 'Thai'}))
     # for d in found:
     #     print(d)
-    return render_template("search-results.html",collection_recipes = found)
+    return render_template("index.html",collection_recipes = found)
 
 @app.route('/indian_cuisine')
 def indian_cuisine():
@@ -41,7 +41,7 @@ def indian_cuisine():
     found = list(collection_recipes.find({'cuisine_type': 'Indian'}))
     # for d in found:
     #     print(d)
-    return render_template("search-results.html",collection_recipes = found)
+    return render_template("index.html",collection_recipes = found)
 
 @app.route('/add', methods =['GET','POST'])
 def addrecipe():
