@@ -58,6 +58,18 @@
         {%endif %}
     {% endfor %}
     </select>
+    <div>
+    <label>Type of Course:</label>
+    <select name = 'coursetype'>
+    {% for e in collection_course %}
+        {%if e['name'] in getrecipe.course_type %}
+        <option selected>{{getrecipe.course_type}}</option>
+        {% else %}
+        <option>{{e['name']}}</option>
+        {%endif %}
+    {% endfor %}
+    </select>
+    </div>
      <div>
         <input type='submit'/>
     </div>
