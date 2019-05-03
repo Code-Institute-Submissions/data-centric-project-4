@@ -12,14 +12,6 @@ class FlaskTest(unittest.TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code,200)
     
-    def test_can_fetch_layout(self):
-        response = self.client.get('/layout')
-        self.assertEqual(response.status_code,200)
-    
-    def test_can_fetch_home(self):
-        response = self.client.get('/base')
-        self.assertEqual(response.status_code,200)
-    
     def test_fetching_invalid_route_results_in_not_found(self):
         response =self.client.get('/xyxyyx')
         self.assertEqual(response.status_code,404)
