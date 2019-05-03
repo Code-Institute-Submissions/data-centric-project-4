@@ -12,51 +12,13 @@ def getindex():
     # for m in found:
     #     print(m)
     # found.rewind()
-    collection_allergens = conn['cookingRecipes']['allergens']
-    found_allergens = list(collection_allergens.find({}))
-    # for a in found_allergens:
-    #     print(a)
-    # found_allergens.rewind()
-    collection_course = conn['cookingRecipes']['course']
-    found_course = list(collection_course.find({}))
-    # for b in found_course:
-    #     print(b)
-    # found_course.rewind()
     collection_cuisine = conn['cookingRecipes']['cuisine']
     found_cuisine = list(collection_cuisine.find({}))
     # for d in found_cuisine:
     #     print(d)
     # found_cuisine.rewind()
-    return render_template("index.html",collection_recipes=found,collection_allergens=found_allergens,collection_course=found_course,collection_cuisine=found_cuisine)
+    return render_template("index.html",collection_recipes=found,collection_cuisine=found_cuisine)
 
-@app.route('/add', methods =['GET','POST'])
-def addrecipe():
-    if request.method =='GET':
-        collection_cuisine= conn['cookingRecipes']['cuisine']
-        found_cuisine =  collection_cuisine.find({})
-        return render_template("add.html",collection_cuisine=found_cuisine)
-    else:
-        name_recipe = request.form['recipename']
-        num_calories = request.form['numofcalories']
-        serving_size = request.form['servingsize']
-        recipe_author = request.form['recipeauthor']
-        prep_time = request.form['preptime']
-        cook_time = request.form['cooktime']
-        instructions = request.form['instructions']
-        cuisine_type = request.form['cuisinetype']
-        collection_recipes = conn['cookingRecipes']['recipes']
-        collection_recipes.insert({
-            'name': name_recipe,
-            'num_of_calories_per_serving': num_calories,
-            'num_of_serving': serving_size,
-            'recipe_author' : recipe_author,
-            'preptime' : prep_time,
-            'cooktime' : cook_time,
-            'instructions' : instructions,
-            'cuisine_type': cuisine_type
-        })
-        return redirect('/')
-        
 @app.route('/msia_cuisine')
 def msia_cuisine():
     collection_recipes = conn['cookingRecipes']['recipes']
@@ -81,6 +43,37 @@ def indian_cuisine():
     #     print(d)
     return render_template("search-results.html",collection_recipes = found)
 
+@app.route('/add', methods =['GET','POST'])
+def addrecipe():
+    if request.method =='GET':
+        collection_cuisine= conn['cookingRecipes']['cuisine']
+        found_cuisine =  collection_cuisine.find({})
+        return render_template("add.html",collection_cuisine=found_cuisine)
+    else:
+        name_recipe = request.form['recipename']
+        num_calories = request.form['numofcalories']
+        serving_size = request.form['servingsize']
+        recipe_author = request.form['recipeauthor']
+        prep_time = request.form['preptime']
+        cook_time = request.form['cooktime']
+        ingredients = request.form['ingredients']
+        instructions = request.form['instructions']
+        cuisine_type = request.form['cuisinetype']
+        collection_recipes = conn['cookingRecipes']['recipes']
+        collection_recipes.insert({
+            'name': name_recipe,
+            'num_of_calories_per_serving': num_calories,
+            'num_of_serving': serving_size,
+            'recipe_author' : recipe_author,
+            'preptime' : prep_time,
+            'cooktime' : cook_time,
+            'ingredients': ingredients,
+            'instructions' : instructions,
+            'cuisine_type': cuisine_type
+        })
+        return redirect('/')
+        
+
 @app.route('/edit_recipe/<recipe_id>', methods=['GET','POST'])
 def edit_recipe(recipe_id):
     collection_recipes = conn['cookingRecipes']['recipes']
@@ -98,6 +91,7 @@ def edit_recipe(recipe_id):
         recipe_author = request.form['recipeauthor']
         prep_time = request.form['preptime']
         cook_time = request.form['cooktime']
+        ingredients = request.form['ingredients']
         instructions = request.form['instructions']
         cuisine_type = request.form['cuisinetype']
         collection_recipes.update({
@@ -110,6 +104,7 @@ def edit_recipe(recipe_id):
             'recipe_author' : recipe_author,
             'preptime' : prep_time,
             'cooktime' : cook_time,
+            'ingredients' : ingredients,
             'instructions' : instructions,
             'cuisine_type': cuisine_type
             }
