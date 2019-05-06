@@ -1,15 +1,10 @@
-# Your Project's Name
+# Data Centric Development Project
 
-One or two paragraphs providing an overview of your project.
+The purpose of this project is to create a web application that enables the users of this web site to view recipes and store their favorite recipes to the site. This web application serves as a central repository for users to store their favorite recipes.
 
-Essentially, this part is your sales pitch.
- 
 ## UX
  
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
+This webpage was created for anyone who has an interest in cooking to allow users to search for recipes based on different search criterias. Users are able to search by criterias such as cuisine type, difficulty level of the recipe and course type. As a user, I want to be able to search recipes based on difficulty level so that I can cook the recipes according to my cooking skills. As a user, I want to be able to view the recipes details so that I can cook the recipes. As a user, I want to be able to edit the recipes so that I can improve on the recipes.
 
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
