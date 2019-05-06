@@ -31,7 +31,7 @@ Other future features such as adding upvotes, the user is able to like the recip
 
 ## Deployment
 
-This project was deployed in github pages using the git commands. This project was also deployed in Heroku
+This project was deployed in github pages using the git commands. This project was also deployed in Heroku.
 
 ## Credits
 
